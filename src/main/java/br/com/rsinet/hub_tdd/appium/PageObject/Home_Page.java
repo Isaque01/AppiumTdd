@@ -1,5 +1,7 @@
 package br.com.rsinet.hub_tdd.appium.PageObject;
 
+import java.time.Duration;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -26,22 +28,22 @@ public class Home_Page {
 	}
 
 	public void Click_btn_Menu() throws InterruptedException {
-
+		wait.pollingEvery(Duration.ofSeconds(10));
 		element = driver.findElement(By.id("com.Advantage.aShopping:id/imageViewMenu"));
 		wait.until(ExpectedConditions.elementToBeClickable(element));
-		//Thread.sleep(2000);
 		element.click();
+		
 	}
 
 	public void Click_btn_Login() {
 		element = driver.findElement(By.id("com.Advantage.aShopping:id/textViewMenuUser"));
-		// wait.until(ExpectedConditions.elementToBeClickable(element));
+		 wait.until(ExpectedConditions.elementToBeClickable(element));
 		element.click();
 	}
 
 	public void click_CreateConta() {
 		element = driver.findElement(By.id("com.Advantage.aShopping:id/textViewSingUpToday"));
-		// wait.until(ExpectedConditions.elementToBeClickable(element));
+	    wait.until(ExpectedConditions.elementToBeClickable(element));
 		element.click();
 	}
 

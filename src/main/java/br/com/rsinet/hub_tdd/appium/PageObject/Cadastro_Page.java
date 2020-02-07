@@ -11,6 +11,7 @@ import br.com.rsinet.hub_tdd.appium.Util.Scroll;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.functions.ExpectedCondition;
 import io.appium.java_client.touch.WaitOptions;
 import io.appium.java_client.touch.offset.PointOption;
 
@@ -23,7 +24,7 @@ public class Cadastro_Page {
 	public Cadastro_Page(AndroidDriver<MobileElement> driver) {
 		this.driver = driver;
 		wait = new WebDriverWait(driver, 10);
-		
+
 	}
 
 	public void txtbox_UserName(String Name) {
@@ -40,15 +41,15 @@ public class Cadastro_Page {
 				"//android.view.ViewGroup[@content-desc=\"Home Page\"]/android.widget.LinearLayout[2]/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout[1]/android.widget.LinearLayout/android.widget.LinearLayout[2]/android.widget.RelativeLayout/android.widget.EditText"));
 		element.click();
 		element.sendKeys(Email);
-	//	driver.hideKeyboard();
 
 	}
 
 	public void txtbox_Password(String Senha) {
-		element = driver.findElement(By.xpath("//android.view.ViewGroup[@content-desc=\"Home Page\"]/android.widget.LinearLayout[2]/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout[1]/android.widget.LinearLayout/android.widget.LinearLayout[3]/android.widget.RelativeLayout/android.widget.EditText"));
+		element = driver.findElement(By.xpath(
+				"//android.view.ViewGroup[@content-desc=\"Home Page\"]/android.widget.LinearLayout[2]/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout[1]/android.widget.LinearLayout/android.widget.LinearLayout[3]/android.widget.RelativeLayout/android.widget.EditText"));
 		element.click();
 		element.sendKeys(Senha);
-		//driver.hideKeyboard();
+
 	}
 
 	public void txtbox_ConfirmPassword(String ConfSenha) {
@@ -56,7 +57,6 @@ public class Cadastro_Page {
 				"//android.view.ViewGroup[@content-desc=\"Home Page\"]/android.widget.LinearLayout[2]/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout[1]/android.widget.LinearLayout/android.widget.LinearLayout[4]/android.widget.RelativeLayout/android.widget.EditText"));
 		element.click();
 		element.sendKeys(ConfSenha);
-		//driver.hideKeyboard();
 
 	}
 
@@ -66,7 +66,6 @@ public class Cadastro_Page {
 		element.click();
 		element.sendKeys(PrimeiroNome);
 
-		//driver.hideKeyboard();
 	}
 
 	public void txtbox_LastName(String UltimoNome) {
@@ -74,7 +73,7 @@ public class Cadastro_Page {
 				"//android.view.ViewGroup[@content-desc=\"Home Page\"]/android.widget.LinearLayout[2]/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout[2]/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.RelativeLayout[2]/android.widget.EditText"));
 		element.click();
 		element.sendKeys(UltimoNome);
-		//driver.hideKeyboard();
+		// driver.hideKeyboard();
 		TouchAction<?> touchAction = new TouchAction(driver);
 		touchAction.press(PointOption.point(1053, 1743)).moveTo(PointOption.point(1050, 322)).perform();
 
@@ -85,7 +84,7 @@ public class Cadastro_Page {
 				"//android.view.ViewGroup[@content-desc=\"Home Page\"]/android.widget.LinearLayout[2]/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout[1]/android.widget.LinearLayout/android.widget.RelativeLayout/android.widget.EditText"));
 		element.click();
 		element.sendKeys(Fone);
-		//driver.hideKeyboard();
+
 	}
 
 	public void listbox_País(String pais) {
@@ -100,7 +99,7 @@ public class Cadastro_Page {
 				"//android.view.ViewGroup[@content-desc=\"Home Page\"]/android.widget.LinearLayout[2]/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout[2]/android.widget.LinearLayout/android.widget.LinearLayout[1]/android.widget.LinearLayout[2]/android.widget.RelativeLayout/android.widget.EditText"));
 		element.click();
 		element.sendKeys(Estado);
-		//driver.hideKeyboard();
+
 	}
 
 	public void txtbox_Address(String End) {
@@ -108,7 +107,7 @@ public class Cadastro_Page {
 				"//android.view.ViewGroup[@content-desc=\"Home Page\"]/android.widget.LinearLayout[2]/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout[2]/android.widget.LinearLayout/android.widget.RelativeLayout/android.widget.EditText"));
 		element.click();
 		element.sendKeys(End);
-		//driver.hideKeyboard();
+
 	}
 
 	public void txtbox_City(String Cidade) {
@@ -116,7 +115,7 @@ public class Cadastro_Page {
 				"//android.view.ViewGroup[@content-desc=\"Home Page\"]/android.widget.LinearLayout[2]/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout[2]/android.widget.LinearLayout/android.widget.LinearLayout[2]/android.widget.RelativeLayout[1]/android.widget.EditText"));
 		element.click();
 		element.sendKeys(Cidade);
-		//driver.hideKeyboard();
+
 	}
 
 	public void txtbox_Cep(String Cep) {
@@ -124,7 +123,6 @@ public class Cadastro_Page {
 				"//android.view.ViewGroup[@content-desc=\"Home Page\"]/android.widget.LinearLayout[2]/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout[2]/android.widget.LinearLayout/android.widget.LinearLayout[2]/android.widget.RelativeLayout[2]/android.widget.EditText"));
 		element.click();
 		element.sendKeys(Cep);
-		//driver.hideKeyboard();
 
 		org.openqa.selenium.Dimension size = driver.manage().window().getSize();
 		int x = size.width / 2;
@@ -139,10 +137,22 @@ public class Cadastro_Page {
 
 	}
 
+	public boolean capturaUserLogado(String texto) {
+		element = driver.findElement(By.id("com.Advantage.aShopping:id/textViewMenuUser"));
+		wait.until(ExpectedConditions.visibilityOf(element));
+		return (element.getText() == "LOGIN") ? false : (element.getText() == texto) ? true : false;
+
+	}
+
 	public void btn_Register() {
 		element = driver.findElement(By.id("com.Advantage.aShopping:id/buttonRegister"));
 		element.click();
 
 	}
-	
+
+	public void espera() {
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("com.Advantage.aShopping:id/imageViewMenu")));
+
+	}
+
 }

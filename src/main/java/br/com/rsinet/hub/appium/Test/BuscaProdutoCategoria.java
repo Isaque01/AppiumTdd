@@ -15,7 +15,8 @@ import io.appium.java_client.MobileElement;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 
-public class BuscaProdutoLupa {
+public class BuscaProdutoCategoria {
+
 	private AndroidDriver<MobileElement> driver;
 	private TouchAction<?> action;
 	private Produto_Page produto_page;
@@ -31,32 +32,27 @@ public class BuscaProdutoLupa {
 		produto_page = pageObjectManager.getProduto_Page();
 	}
 
-	@Test
-	public void BuscaProdutoSucesso() throws Exception {
+	//@Test
+
+	public void CategoriaSucesso() throws Exception {
 
 		ExcelUtils.setExcelFile(FileReaderManager.getInstance().getConfigReader().getPathExcel(), "BuscaProduto");
 
-		produto_page.ClicarLupa();
-
-		produto_page.EntreComProduto(ExcelUtils.getCellData(1, 0));
-
-		produto_page.EscolherProduto(ExcelUtils.getCellData(2, 0));
-		produto_page.espera();
-
+		produto_page.ProdutoCategoriaSucesso(ExcelUtils.getCellData(1, 1));
+		produto_page.Tempo();
+		produto_page.Fone(ExcelUtils.getCellData(1, 2));
 	}
-
 	@Test
 
-	public void BuscaProdutoErro() throws Exception {
+	public void CategoriaErro() throws Exception {
 
 		ExcelUtils.setExcelFile(FileReaderManager.getInstance().getConfigReader().getPathExcel(), "BuscaProduto");
 
-		produto_page.ClicarLupa();
+		produto_page.ProdutoCategoriaErro(ExcelUtils.getCellData(6, 0));
+		produto_page.espera1();
+		produto_page.ProdutoCategoriaErro(ExcelUtils.getCellData(6, 1));
 
-		produto_page.EntreProdutoErro(ExcelUtils.getCellData(4, 0));
-		produto_page.espera();
 	}
-
 
 	@After
 	public void finaliza_teste() throws Exception {
@@ -64,5 +60,4 @@ public class BuscaProdutoLupa {
 		Screenshot.printTela(driver, Generator.dataHorParaArquvio());
 		driver.quit();
 	}
-
 }
