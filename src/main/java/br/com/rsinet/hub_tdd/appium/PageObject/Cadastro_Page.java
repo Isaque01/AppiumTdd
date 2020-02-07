@@ -1,7 +1,5 @@
 package br.com.rsinet.hub_tdd.appium.PageObject;
 
-import java.awt.Dimension;
-import java.sql.Driver;
 import java.time.Duration;
 
 import org.openqa.selenium.By;
@@ -22,15 +20,15 @@ public class Cadastro_Page {
 	private WebDriverWait wait;
 	private WebElement element;
 
-	public Cadastro_Page(AndroidDriver<MobileElement> driver2) {
-		this.driver = driver2;
-		wait = new WebDriverWait(this.driver, 10);
+	public Cadastro_Page(AndroidDriver<MobileElement> driver) {
+		this.driver = driver;
+		wait = new WebDriverWait(driver, 10);
+		
 	}
 
 	public void txtbox_UserName(String Name) {
 		element = driver.findElement(By.xpath(
-				"//android.view.ViewGroup[@content-desc=\"Home Page\"]/android.widget.LinearLayout[2]/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout[1]/android.widget.LinearLayout/android.widget.LinearLayout[1]/android.widget.RelativeLayout/android.widget.EditText\r\n"
-						+ ""));
+				"//android.view.ViewGroup[@content-desc=\"Home Page\"]/android.widget.LinearLayout[2]/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout[1]/android.widget.LinearLayout/android.widget.LinearLayout[1]/android.widget.RelativeLayout/android.widget.EditText"));
 		wait.until(ExpectedConditions.visibilityOf(element));
 		element.click();
 		element.sendKeys(Name);
@@ -39,52 +37,44 @@ public class Cadastro_Page {
 
 	public void txtbox_Email(String Email) {
 		element = driver.findElement(By.xpath(
-				"//android.view.ViewGroup[@content-desc=\"Home Page\"]/android.widget.LinearLayout[2]/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout[1]/android.widget.LinearLayout/android.widget.LinearLayout[2]/android.widget.RelativeLayout/android.widget.EditText\r\n"
-						+ ""));
+				"//android.view.ViewGroup[@content-desc=\"Home Page\"]/android.widget.LinearLayout[2]/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout[1]/android.widget.LinearLayout/android.widget.LinearLayout[2]/android.widget.RelativeLayout/android.widget.EditText"));
 		element.click();
 		element.sendKeys(Email);
-		driver.hideKeyboard();
+	//	driver.hideKeyboard();
 
 	}
 
 	public void txtbox_Password(String Senha) {
-		element = driver.findElement(By.xpath(
-				"//android.view.ViewGroup[@content-desc=\"Home Page\"]/android.widget.LinearLayout[2]/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout[1]/android.widget.LinearLayout/android.widget.LinearLayout[3]/android.widget.RelativeLayout/android.widget.EditText\r\n"
-						+ ""));
+		element = driver.findElement(By.xpath("//android.view.ViewGroup[@content-desc=\"Home Page\"]/android.widget.LinearLayout[2]/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout[1]/android.widget.LinearLayout/android.widget.LinearLayout[3]/android.widget.RelativeLayout/android.widget.EditText"));
 		element.click();
 		element.sendKeys(Senha);
-		driver.hideKeyboard();
+		//driver.hideKeyboard();
 	}
 
 	public void txtbox_ConfirmPassword(String ConfSenha) {
 		element = driver.findElement(By.xpath(
-				"//android.view.ViewGroup[@content-desc=\"Home Page\"]/android.widget.LinearLayout[2]/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout[1]/android.widget.LinearLayout/android.widget.LinearLayout[4]/android.widget.RelativeLayout/android.widget.EditText\r\n"
-						+ ""));
+				"//android.view.ViewGroup[@content-desc=\"Home Page\"]/android.widget.LinearLayout[2]/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout[1]/android.widget.LinearLayout/android.widget.LinearLayout[4]/android.widget.RelativeLayout/android.widget.EditText"));
 		element.click();
 		element.sendKeys(ConfSenha);
-		driver.hideKeyboard();
-//		
-//		TouchAction<?> touchAction = new TouchAction(driver);
-//		touchAction.press(PointOption.point(1047, 1713)).moveTo(PointOption.point(1045, 286)).perform();
+		//driver.hideKeyboard();
+
 	}
 
 	public void txtbox_FirstName(String PrimeiroNome) {
 		element = driver.findElement(By.xpath(
-				"//android.view.ViewGroup[@content-desc=\"Home Page\"]/android.widget.LinearLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout[2]/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.RelativeLayout[1]/android.widget.EditText\r\n"
-						+ ""));
+				"//android.view.ViewGroup[@content-desc=\"Home Page\"]/android.widget.LinearLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout[2]/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.RelativeLayout[1]/android.widget.EditText"));
 		element.click();
 		element.sendKeys(PrimeiroNome);
 
-		driver.hideKeyboard();
+		//driver.hideKeyboard();
 	}
 
 	public void txtbox_LastName(String UltimoNome) {
 		element = driver.findElement(By.xpath(
-				"//android.view.ViewGroup[@content-desc=\"Home Page\"]/android.widget.LinearLayout[2]/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout[2]/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.RelativeLayout[2]/android.widget.EditText\r\n"
-						+ ""));
+				"//android.view.ViewGroup[@content-desc=\"Home Page\"]/android.widget.LinearLayout[2]/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout[2]/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.RelativeLayout[2]/android.widget.EditText"));
 		element.click();
 		element.sendKeys(UltimoNome);
-		driver.hideKeyboard();
+		//driver.hideKeyboard();
 		TouchAction<?> touchAction = new TouchAction(driver);
 		touchAction.press(PointOption.point(1053, 1743)).moveTo(PointOption.point(1050, 322)).perform();
 
@@ -92,11 +82,10 @@ public class Cadastro_Page {
 
 	public void txtbox_Phone(String Fone) {
 		element = driver.findElement(By.xpath(
-				"//android.view.ViewGroup[@content-desc=\"Home Page\"]/android.widget.LinearLayout[2]/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout[1]/android.widget.LinearLayout/android.widget.RelativeLayout/android.widget.EditText\r\n"
-						+ ""));
+				"//android.view.ViewGroup[@content-desc=\"Home Page\"]/android.widget.LinearLayout[2]/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout[1]/android.widget.LinearLayout/android.widget.RelativeLayout/android.widget.EditText"));
 		element.click();
 		element.sendKeys(Fone);
-		driver.hideKeyboard();
+		//driver.hideKeyboard();
 	}
 
 	public void listbox_País(String pais) {
@@ -108,38 +97,34 @@ public class Cadastro_Page {
 
 	public void txtbox_State(String Estado) {
 		element = driver.findElement(By.xpath(
-				"//android.view.ViewGroup[@content-desc=\"Home Page\"]/android.widget.LinearLayout[2]/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout[2]/android.widget.LinearLayout/android.widget.LinearLayout[1]/android.widget.LinearLayout[2]/android.widget.RelativeLayout/android.widget.EditText\r\n"
-						+ ""));
+				"//android.view.ViewGroup[@content-desc=\"Home Page\"]/android.widget.LinearLayout[2]/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout[2]/android.widget.LinearLayout/android.widget.LinearLayout[1]/android.widget.LinearLayout[2]/android.widget.RelativeLayout/android.widget.EditText"));
 		element.click();
 		element.sendKeys(Estado);
-		driver.hideKeyboard();
+		//driver.hideKeyboard();
 	}
 
 	public void txtbox_Address(String End) {
 		element = driver.findElement(By.xpath(
-				"//android.view.ViewGroup[@content-desc=\"Home Page\"]/android.widget.LinearLayout[2]/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout[2]/android.widget.LinearLayout/android.widget.RelativeLayout/android.widget.EditText\r\n"
-						+ ""));
+				"//android.view.ViewGroup[@content-desc=\"Home Page\"]/android.widget.LinearLayout[2]/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout[2]/android.widget.LinearLayout/android.widget.RelativeLayout/android.widget.EditText"));
 		element.click();
 		element.sendKeys(End);
-		driver.hideKeyboard();
+		//driver.hideKeyboard();
 	}
 
 	public void txtbox_City(String Cidade) {
 		element = driver.findElement(By.xpath(
-				"//android.view.ViewGroup[@content-desc=\"Home Page\"]/android.widget.LinearLayout[2]/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout[2]/android.widget.LinearLayout/android.widget.LinearLayout[2]/android.widget.RelativeLayout[1]/android.widget.EditText\r\n"
-						+ ""));
+				"//android.view.ViewGroup[@content-desc=\"Home Page\"]/android.widget.LinearLayout[2]/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout[2]/android.widget.LinearLayout/android.widget.LinearLayout[2]/android.widget.RelativeLayout[1]/android.widget.EditText"));
 		element.click();
 		element.sendKeys(Cidade);
-		driver.hideKeyboard();
+		//driver.hideKeyboard();
 	}
 
 	public void txtbox_Cep(String Cep) {
 		element = driver.findElement(By.xpath(
-				"//android.view.ViewGroup[@content-desc=\"Home Page\"]/android.widget.LinearLayout[2]/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout[2]/android.widget.LinearLayout/android.widget.LinearLayout[2]/android.widget.RelativeLayout[2]/android.widget.EditText\r\n"
-						+ ""));
+				"//android.view.ViewGroup[@content-desc=\"Home Page\"]/android.widget.LinearLayout[2]/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout[2]/android.widget.LinearLayout/android.widget.LinearLayout[2]/android.widget.RelativeLayout[2]/android.widget.EditText"));
 		element.click();
 		element.sendKeys(Cep);
-		driver.hideKeyboard();
+		//driver.hideKeyboard();
 
 		org.openqa.selenium.Dimension size = driver.manage().window().getSize();
 		int x = size.width / 2;
@@ -159,4 +144,5 @@ public class Cadastro_Page {
 		element.click();
 
 	}
+	
 }

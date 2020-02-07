@@ -12,7 +12,7 @@ public class Screenshot {
 		File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
 		try {
 		FileUtils.copyFile(screenshot,
-				new File("C:\\Users\\isaque.silva\\Hub-workspace\\ProjetoAvaliacao_TDD\\target\\Print\\"
+				new File("C:\\Users\\isaque.silva\\Hub-appium\\AppiumTdd\\target\\PrintTela\\"
 						+arquivo + ".png"));
 		} catch (Exception e) {
 			System.out.println("Houveram problemas ao copiar o arquivo para a pasta" + e.getMessage());

@@ -7,7 +7,7 @@ import java.util.Properties;
 
 public class ConfigFileReader {
 	private Properties properties;
-	private final String propertyFilePath = "config//configuration.properties";
+	private final String propertyFilePath = "configs//Configuration.properties";
 	
 
 	public ConfigFileReader() {
@@ -113,5 +113,6 @@ public class ConfigFileReader {
 		
 		throw new RuntimeException("Path não está especificado em configuration.properties");
 	}
-		
+	
+
 }

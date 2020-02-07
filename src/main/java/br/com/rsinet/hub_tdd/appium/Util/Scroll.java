@@ -1,11 +1,9 @@
 package br.com.rsinet.hub_tdd.appium.Util;
 
-import java.awt.Dimension;
 import java.time.Duration;
 
 import org.openqa.selenium.remote.RemoteWebElement;
 
-import br.com.rsinet.hub_tdd.appium.PageObject.DriverFactory;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
