@@ -7,11 +7,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import br.com.rsinet.hub_tdd.appium.Util.Scroll;
+import br.com.rsinet.hub_tdd.appium.Util.AcoesTouchActions;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.functions.ExpectedCondition;
 import io.appium.java_client.touch.WaitOptions;
 import io.appium.java_client.touch.offset.PointOption;
 
@@ -20,10 +19,12 @@ public class Cadastro_Page {
 	private AndroidDriver<MobileElement> driver;
 	private WebDriverWait wait;
 	private WebElement element;
+	private AcoesTouchActions acoes;
 
 	public Cadastro_Page(AndroidDriver<MobileElement> driver) {
 		this.driver = driver;
 		wait = new WebDriverWait(driver, 10);
+		acoes = new AcoesTouchActions(this.driver);
 
 	}
 
@@ -73,7 +74,7 @@ public class Cadastro_Page {
 				"//android.view.ViewGroup[@content-desc=\"Home Page\"]/android.widget.LinearLayout[2]/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout[2]/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.RelativeLayout[2]/android.widget.EditText"));
 		element.click();
 		element.sendKeys(UltimoNome);
-		// driver.hideKeyboard();
+		@SuppressWarnings("rawtypes")
 		TouchAction<?> touchAction = new TouchAction(driver);
 		touchAction.press(PointOption.point(1053, 1743)).moveTo(PointOption.point(1050, 322)).perform();
 
@@ -90,7 +91,7 @@ public class Cadastro_Page {
 	public void listbox_País(String pais) {
 		element = driver.findElement(By.id("com.Advantage.aShopping:id/linearLayoutCountry"));
 		element.click();
-		Scroll.scrollAndClick(driver, pais);
+		acoes.scrollNameClick(pais);
 
 	}
 
@@ -130,7 +131,8 @@ public class Cadastro_Page {
 		int end_y = (int) (size.height * 0.2);
 		int start_y = (int) (size.height * 0.9);
 
-		TouchAction<?> touchAction = new TouchAction(driver);
+		@SuppressWarnings("rawtypes")
+		TouchAction touchAction = new TouchAction(driver);
 		touchAction.press(PointOption.point(x, start_y)).waitAction((WaitOptions.waitOptions(Duration.ofMillis(500))))//
 				.moveTo(PointOption.point(x, end_y))//
 				.release().perform();

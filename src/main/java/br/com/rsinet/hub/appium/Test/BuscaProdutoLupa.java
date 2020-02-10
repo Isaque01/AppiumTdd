@@ -1,5 +1,7 @@
 package br.com.rsinet.hub.appium.Test;
 
+import static org.testng.Assert.assertTrue;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -12,12 +14,11 @@ import br.com.rsinet.hub_tdd.appium.Util.ExcelUtils;
 import br.com.rsinet.hub_tdd.appium.Util.Generator;
 import br.com.rsinet.hub_tdd.appium.Util.Screenshot;
 import io.appium.java_client.MobileElement;
-import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 
 public class BuscaProdutoLupa {
 	private AndroidDriver<MobileElement> driver;
-	private TouchAction<?> action;
+	
 	private Produto_Page produto_page;
 	private PageObjectManager pageObjectManager;
 	private WebDriverManager manager;
@@ -36,12 +37,12 @@ public class BuscaProdutoLupa {
 
 		ExcelUtils.setExcelFile(FileReaderManager.getInstance().getConfigReader().getPathExcel(), "BuscaProduto");
 
-		produto_page.ClicarLupa();
-
 		produto_page.EntreComProduto(ExcelUtils.getCellData(1, 0));
 
+		//produto_page.espera();
 		produto_page.EscolherProduto(ExcelUtils.getCellData(2, 0));
-		produto_page.espera();
+		
+		assertTrue(driver.getPageSource().contains(ExcelUtils.getCellData(1, 0).toUpperCase()));
 
 	}
 
@@ -51,10 +52,10 @@ public class BuscaProdutoLupa {
 
 		ExcelUtils.setExcelFile(FileReaderManager.getInstance().getConfigReader().getPathExcel(), "BuscaProduto");
 
-		produto_page.ClicarLupa();
-
 		produto_page.EntreProdutoErro(ExcelUtils.getCellData(4, 0));
-		produto_page.espera();
+		//produto_page.espera();
+		
+		assertTrue(driver.getPageSource().contains("- No results for \""+ ExcelUtils.getCellData(4, 0)+"\" -"));
 	}
 
 

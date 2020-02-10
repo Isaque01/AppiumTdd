@@ -7,18 +7,21 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 
 public class Home_Page {
 
-	private AndroidDriver<MobileElement> driver;
+	private AppiumDriver<MobileElement> driver;
 	private WebElement element;
 	private WebDriverWait wait;
+	
 
-	public Home_Page(AndroidDriver<MobileElement> driver) {
+	public Home_Page(AppiumDriver<MobileElement> driver) {
 		this.driver = driver;
 		wait = new WebDriverWait(this.driver, 10);
+		
 
 	}
 
@@ -32,18 +35,18 @@ public class Home_Page {
 		element = driver.findElement(By.id("com.Advantage.aShopping:id/imageViewMenu"));
 		wait.until(ExpectedConditions.elementToBeClickable(element));
 		element.click();
-		
+
 	}
 
 	public void Click_btn_Login() {
 		element = driver.findElement(By.id("com.Advantage.aShopping:id/textViewMenuUser"));
-		 wait.until(ExpectedConditions.elementToBeClickable(element));
+		wait.until(ExpectedConditions.elementToBeClickable(element));
 		element.click();
 	}
 
 	public void click_CreateConta() {
 		element = driver.findElement(By.id("com.Advantage.aShopping:id/textViewSingUpToday"));
-	    wait.until(ExpectedConditions.elementToBeClickable(element));
+		wait.until(ExpectedConditions.elementToBeClickable(element));
 		element.click();
 	}
 
@@ -58,4 +61,5 @@ public class Home_Page {
 		wait.until(ExpectedConditions.elementToBeClickable(element));
 		element.click();
 	}
+
 }

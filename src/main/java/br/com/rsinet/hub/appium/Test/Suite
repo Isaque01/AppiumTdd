@@ -3,7 +3,8 @@
     <test name = "AppiumTdd">
         <classes>
             <class name = "br.com.rsinet.hub.appium.Test.Cadastro" />
-            
+            <class name = "br.com.rsinet.hub.appium.Test.BuscaProdutoCategoria" />
+            <class name = "br.com.rsinet.hub.appium.Test.BuscaProdutoLupa" />
         </classes>
     </test>    
 </suite>
