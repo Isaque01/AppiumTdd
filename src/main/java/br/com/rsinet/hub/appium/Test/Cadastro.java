@@ -17,29 +17,25 @@ import br.com.rsinet.hub_tdd.appium.PageObject.Cadastro_Page;
 import br.com.rsinet.hub_tdd.appium.PageObject.Home_Page;
 import br.com.rsinet.hub_tdd.appium.Util.ExcelUtils;
 import br.com.rsinet.hub_tdd.appium.Util.ExtentReport;
-import br.com.rsinet.hub_tdd.appium.Util.Generator;
-import br.com.rsinet.hub_tdd.appium.Util.Screenshot;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 
 public class Cadastro {
 
 	private AndroidDriver<MobileElement> driver;
-	
+
 	private Home_Page home_page;
 	private Cadastro_Page cadastro_page;
-    private PageObjectManager pageObjectManager;
+	private PageObjectManager pageObjectManager;
 	private WebDriverManager manager;
 	private static ExtentReports test;
 	private ExtentTest report;
 	private String teste;
-	
-	
+
 	@BeforeClass
 	public static void test() {
 		test = ExtentReport.setExtent("Cadastro");
 	}
-	
 
 	@Before
 	public void entre() throws Exception {
@@ -49,14 +45,13 @@ public class Cadastro {
 		pageObjectManager = new PageObjectManager(driver);
 		home_page = pageObjectManager.getHome_Page();
 		cadastro_page = pageObjectManager.getCadastro_Page();
+		ExcelUtils.setExcelFile(FileReaderManager.getInstance().getConfigReader().getPathExcel(), "Cadastro");
 	}
 
 	@Test
 	public void Cadastro_Possitivo() throws Exception {
-		
-		report = ExtentReport.createTest("Cadastro sucesso");
 
-		ExcelUtils.setExcelFile(FileReaderManager.getInstance().getConfigReader().getPathExcel(), "Cadastro");
+		report = ExtentReport.createTest("Cadastro_Possitivo");
 
 		home_page.Click_btn_Menu();
 		home_page.Click_btn_Login();
@@ -78,7 +73,7 @@ public class Cadastro {
 		cadastro_page.btn_Register();
 		cadastro_page.espera();
 		home_page.Click_btn_Menu();
-		
+
 		ExtentReport.statusReported(report, driver, teste);
 		teste = "Cadastro sucesso";
 
@@ -88,7 +83,7 @@ public class Cadastro {
 	@Test
 	public void Cadastro_Negativo() throws Exception {
 
-		ExcelUtils.setExcelFile(FileReaderManager.getInstance().getConfigReader().getPathExcel(), "Cadastro");
+		report = ExtentReport.createTest("Cadastro_Negativo");
 
 		home_page.Click_btn_Menu();
 		home_page.Click_btn_Login();
@@ -111,14 +106,17 @@ public class Cadastro {
 		cadastro_page.espera();
 		home_page.Click_btn_Menu();
 
+		ExtentReport.statusReported(report, driver, teste);
+		teste = "Cadastro Falha";
+
 		assertFalse(cadastro_page.capturaUserLogado(ExcelUtils.getCellData(1, 0)));
 
 	}
 
 	@After
-	public void finaliza_teste() throws Exception {
+	public void finaliza_teste() {
 
-		Screenshot.printTela(driver, Generator.dataHorParaArquvio());
-		driver.quit();
+		ExtentReport.quitExtent(test);
+		WebDriverManager.closeDriver(driver);
 	}
 }

@@ -11,16 +11,16 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 
 public class Screenshot {
-	public static void printTela(WebDriver driver, String arquivo) throws Exception {
-		File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-		try {
-		FileUtils.copyFile(screenshot,
-				new File("C:\\Users\\isaque.silva\\Hub-appium\\AppiumTdd\\target\\PrintTela\\"
-						+arquivo + ".png"));
-		} catch (Exception e) {
-			System.out.println("Houveram problemas ao copiar o arquivo para a pasta" + e.getMessage());
-		}
-	}
+//	public static void printTela(WebDriver driver, String arquivo) throws Exception {
+//		File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+//		try {
+//		FileUtils.copyFile(screenshot,
+//				new File("C:\\Users\\isaque.silva\\Hub-appium\\AppiumTdd\\target\\PrintTela\\"
+//						+arquivo + ".png"));
+//		} catch (Exception e) {
+//			System.out.println("Houveram problemas ao copiar o arquivo para a pasta" + e.getMessage());
+//		}
+//	}
 
 	public static String getScreenshot(WebDriver driver, String testName) throws IOException {
 		String dateName = new SimpleDateFormat("dd_MM_yyyy HH.mm.ss").format(Calendar.getInstance().getTime());

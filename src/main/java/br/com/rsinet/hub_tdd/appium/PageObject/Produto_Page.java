@@ -106,11 +106,6 @@ public class Produto_Page {
 		
        
 	}
-
-//	public void espera() {
-//		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.LinearLayout[3]/android.widget.RelativeLayout/android.support.v4.view.ViewPager/android.widget.ImageView")));
-//	}
-
 	public void espera1() {
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("com.Advantage.aShopping:id/textViewFilter")));
 		

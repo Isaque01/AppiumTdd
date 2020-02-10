@@ -39,7 +39,7 @@ public class WebDriverManager {
 		return driver;
 	}
 
-	public void closeDriver() {
+	public static void closeDriver(AndroidDriver<MobileElement> driver) {
 		if (driver == null) {
 			throw new NullPointerException("Driver não iniciado");
 		}
